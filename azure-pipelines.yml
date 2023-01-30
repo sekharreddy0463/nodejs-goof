@@ -14,3 +14,18 @@ steps:
     npm install
     npm run build     
   displayName: 'npm install and build'
+
+- task: SnykSecurityScan@1
+  inputs:
+      serviceConnectionEndpoint: 'sekharreddy04631'
+      testType: 'app'
+      monitorWhen: 'always'
+      failOnIssues: false
+      projectName: 'sekharreddy0463'
+      organization: 'sekharreddy0463'
+      
+- task: CmdLine@2
+  inputs:
+          script: |
+            docker build -t new_image .
+            docker images
