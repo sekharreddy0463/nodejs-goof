@@ -29,3 +29,16 @@ steps:
           script: |
             docker build -t new_image .
             docker images
+
+- task: SnykSecurityScan@1
+  inputs:
+                serviceConnectionEndpoint: 'sekharreddy04631'
+                testType: 'container'
+                dockerImageName: 'new_image'
+                dockerfilePath: 'Dockerfile'
+                monitorWhen: 'always'
+                failOnIssues: false
+                projectName: 'sekharreddy0463'
+                organization: 'sekharreddy0463'
+
+
